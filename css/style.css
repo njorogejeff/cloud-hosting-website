@@ -5,6 +5,8 @@
     --secondary-color: #1c3fa8;
     --dark-color: #002240;
     --light-color: #f4f4f4;
+    --success-color: #5cb85c;
+    --error-color: #d9534f;
 }
 
 * {
@@ -35,6 +37,16 @@ p {
 }
 img {
     width: 100%;
+}
+code,
+pre {
+    background: #333;
+    color: #fff;
+    padding: 10px;
+}
+.hidden {
+    visibility: hidden;
+    height: 0;
 }
 
 /* Navbar Styles */
@@ -76,6 +88,9 @@ img {
     grid-template-columns: 55% 45%;
     gap: 30px;
 }
+.showcase-text {
+    animation: slideInFromLeft 1s ease-in;
+}
 .showcase-form {
     position: relative;
     top: 60px;
@@ -84,6 +99,7 @@ img {
     padding: 40px;
     z-index: 100;
     justify-self: flex-end;
+    animation: slideInFromRight 1s ease-in;
 }
 .showcase-form .form-control {
     margin: 30px 0;
@@ -117,6 +133,7 @@ img {
 /* Stats Section Styles */
 .stats {
     padding-top: 100px;
+    animation: slideInFromBottom 1s ease-in;
 }
 .stats-heading {
     max-width: 500px;
@@ -185,9 +202,61 @@ img {
     grid-column: 1 / span 2;
 }
 
+/* Docs Page Styles */
+.docs-main h3 {
+    margin: 20px 0;
+}
+.docs-main .grid {
+    grid-template-columns: 1fr 2fr;
+    align-items: flex-start;
+}
+.docs-main nav li {
+    font-size: 17px;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    border-bottom: 1px #ccc solid;
+}
+.docs-main a:hover {
+    font-weight: bold;
+}
+
 /* Footer Section Styles */
 .footer .social a {
     margin: 0 10px;
+}
+
+/* Animations */
+@keyframes slideInFromLeft {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+@keyframes slideInFromRight {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+@keyframes slideInFromTop {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+@keyframes slideInFromBottom {
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateY(0);
+    }
 }
 
 /* Tablets and under */
@@ -196,7 +265,9 @@ img {
     .showcase .grid,
     .stats .grid,
     .cli .grid,
-    .cloud .grid {
+    .cloud .grid,
+    .features-main .grid,
+    .docs-main .grid {
         grid-template-columns: 1fr;
         grid-template-rows: 1fr;
     }
@@ -206,14 +277,30 @@ img {
     .showcase-text {
         text-align: center;
         margin-top: 40px;
+        animation: slideInFromTop 1s ease-in;
     }
     .showcase-form {
         justify-self: center;
         margin: auto;
+        animation: slideInFromBottom 1s ease-in;
     }
     .cli .grid >*:first-child {
         grid-column: 1;
         grid-row: 1;
+    }
+    .features-header,
+    .features-sub-header,
+    .docs-header {
+        text-align: center;
+    }
+    .features-header img,
+    .features-sub-header img,
+    .docs-header img {
+        justify-self: center;
+    }
+    .features-main .grid > *:first-child,
+    .features-main .grid > *:nth-child(2) {
+        grid-column: 1;
     }
 }
 
